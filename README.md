@@ -7,4 +7,17 @@ At the moment, all of the backend infrastructure required for it is hosted on GC
 
 ## Setup
 
-[coming soon...]
+First clone the repository:
+
+```bash
+git clone <repo-url>
+cd live-sports-scoreboard-api
+```
+
+Right now I just have a couple of placeholder endpoints while I work on finishing migrating the code. Information about the endpoints will be added soon. To run the API with docker simply do the following.
+
+```bash
+docker-compose up --build
+```
+
+Visit `localhost:3000` to see the API up and running.
