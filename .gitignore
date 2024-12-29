@@ -1,0 +1,6 @@
+*.zip
+secrets/
+node_modules/
+.env
+*.log
+deploy_pkgs/
