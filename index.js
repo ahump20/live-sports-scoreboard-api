@@ -35,3 +35,38 @@ app.get('/test-redis-conn', async (req, res) => {
         res.status(500).send("Encountered an error while trying to access Redis DB: " + error);
     }
 })
+
+app.get('/nfl/get-game-count', async (req, res) => {
+    try {
+        const nfl_game_count = await redis_conn.hgetall('nfl_game_count');
+        console.log(nfl_game_count);
+        res.status(200).json({game_count: nfl_game_count["game_count"]});
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Encountered an error while trying to get game count from DB: " + error);
+    }
+});
+
+app.get('/nfl/get-live-score/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        const game = await redis_conn.hgetall(`nfl_game:${id}`);
+        const response_json = {
+            away_team: game["away_team"],
+            away_team_id: game["away_team_id"],
+            away_score: game["away_score"],
+            away_record: game["away_record"],
+            home_team: game["home_team"],
+            home_team_id: game["home_team_id"],
+            home_score: game["home_score"],
+            home_record: game["home_record"],
+            display_game_state: game["display_game_state"],
+            game_state: game["game_state"],
+            possession_info: game["possession_info"],
+        }
+        console.log(response_json);
+        res.status(200).json(response_json);
+    } catch (error) {
+        res.status(500).send("Internal Server Error");
+    }
+})
