@@ -21,3 +21,9 @@ docker-compose up --build
 ```
 
 Visit `localhost:3000` to see the API up and running.
+
+### API Endpoints
+Below are the API's endpoints and some basic details about them:
+
+- `/nfl/get-game-count`
+- `/nfl/get-live-score/:id`
