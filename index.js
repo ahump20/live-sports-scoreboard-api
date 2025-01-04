@@ -52,6 +52,10 @@ app.get('/nfl/get-game-count', async (req, res) => {
     }
 });
 
+const convertNoneToNull = (value) => {
+    return (value.toLowerCase() == 'none') ? null : value;
+}
+
 app.get('/nfl/get-live-score/:id', async (req, res) => {
     const id = req.params.id;
     try {
@@ -67,7 +71,7 @@ app.get('/nfl/get-live-score/:id', async (req, res) => {
             home_record: game["home_record"],
             display_game_state: game["display_game_state"],
             game_state: game["game_state"],
-            possession_info: game["possession_info"],
+            possession_info: convertNoneToNull(game["possession_info"]),
         }
         console.log(response_json);
         res.status(200).json(response_json);
