@@ -30,7 +30,7 @@ app.get('/debug', async (req, res) => {
 });
 
 app.get('/test-redis-conn', async (req, res) => {
-    const test_game_key = "test_game:001";
+    const test_game_key = "nfl_game:1";
     try {
         const test_game = await nfl_redis_conn.hgetall(test_game_key);
         console.log(test_game);
