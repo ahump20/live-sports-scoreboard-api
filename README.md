@@ -1,11 +1,11 @@
 # Live Sports Scoreboard API
 
 ## Description
-A simple API build with Node.js and Express and containerized using Docker. It is one component of a project I have worked on using an Adafruit Matrix Portal. In short, it is an LED scoreboard that can show live up-to-the-minute scores for the MLB and NFL. This is the API that is called by the scoreboard to get the live score data.
+A simple API build with Node.js and Express and containerized using Docker. It is one component of a project I have worked on using an Adafruit M4 MatrixPortal. In short, it is an LED scoreboard that can show live up-to-the-minute scores for the MLB and NFL. This is the API that is called by the scoreboard to get the live score data. There is also a set of python scripts that I run as cron jobs that is also needed as a part of the data pipeline for this project. The repository for those scripts [can be found here](https://github.com/nishs9/live-sports-score-update-service).
 
-At the moment, all of the backend infrastructure required for it is hosted on GCP. My goal is to self-host everything on my Raspberry Pi. As a side objective, I also want to document everything I build and add it to my Github.
+At the moment, all of the backend infrastructure required for this project is hosted on GCP. My goal is to self-host everything on my Raspberry Pi. As a side objective, I also want to document everything I build and add it to my Github.
 
-## Setup
+## Setup [work in progress...]
 
 First clone the repository:
 
@@ -27,3 +27,5 @@ Below are the API's endpoints and some basic details about them:
 
 - `/nfl/get-game-count`
 - `/nfl/get-live-score/:id`
+- `/mlb/get-game-count`
+- `/mlb/get-live-score/:id`
